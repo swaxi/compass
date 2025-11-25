@@ -264,7 +264,7 @@ Item {
                 
                 // Icon
                 Text {
-                    text: "📍"
+                    text: "🧭"
                     font.pixelSize: 28
                     anchors.horizontalCenter: parent.horizontalCenter
                 }

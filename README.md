@@ -125,7 +125,7 @@ The plugin adds **one red button** to QField's toolbar:
 
 ```
 ┌──────────────┐
-│    📍  Ⓐ     │  ← Pin icon + Auto indicator (A=auto, M=manual)
+│    🧭  Ⓐ    │  ← Pin icon + Auto indicator (A=auto, M=manual)
 │              │
 │  Az: 45°     │  ← Live azimuth value
 │  Plunge:15°  │  ← Live pitch/plunge value
