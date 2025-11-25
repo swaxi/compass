@@ -537,7 +537,7 @@ Suggestions and improvements welcome!
 
 ### License
 
-Open source - use freely for geological fieldwork.
+MIT - use freely for geological fieldwork, see licence info for more details.
 
 ---
 
