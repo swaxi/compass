@@ -126,7 +126,7 @@ The plugin adds **one red button** to QField's toolbar:
 
 ```
 ┌──────────────┐
-│    📍  Ⓐ    │  ← Pin icon + Auto indicator (A=auto, M=manual)
+│    📍  Ⓐ     │  ← Pin icon + Auto indicator (A=auto, M=manual)
 │              │
 │  Az: 45°     │  ← Live azimuth value
 │  Plunge:15°  │  ← Live pitch/plunge value
@@ -578,8 +578,8 @@ Built using:
 │  QField Geology Plugin Quick Reference  │
 ├─────────────────────────────────────────┤
 │  BUTTON:                                │
-│  🔴 Red + 🟢A = Auto ON                 │
-│  ⚫ Gray + M = Manual                    │
+│  🔴 Red + 🟢A = Auto ON                │
+│  ⚫ Gray + M = Manual                   │
 │                                         │
 │  ACTIONS:                               │
 │  Tap = Fill fields                      │
