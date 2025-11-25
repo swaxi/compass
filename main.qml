@@ -227,8 +227,8 @@ Item {
         id: mainButtonComponent
         
         Button {
-            width: 120
-            height: 120
+            width: 100
+            height: 110
             
             background: Rectangle {
                 color: parent.pressed ? "#C62828" : (autoFillEnabled ? "#F44336" : "#9E9E9E")
