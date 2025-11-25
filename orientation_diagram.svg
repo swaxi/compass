@@ -1,0 +1,131 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto">
+      <polygon points="0 0, 10 3, 0 6" fill="#333" />
+    </marker>
+  </defs>
+  
+  <!-- Title -->
+  <text x="400" y="30" text-anchor="middle" font-size="24" font-weight="bold">
+    Spatial Orientation Measurements
+  </text>
+  
+  <!-- Azimuth (Compass) Section -->
+  <g transform="translate(150, 100)">
+    <text x="0" y="-10" font-size="18" font-weight="bold">Azimuth (Compass Heading)</text>
+    
+    <!-- Compass circle -->
+    <circle cx="100" cy="100" r="80" fill="none" stroke="#333" stroke-width="2"/>
+    
+    <!-- Cardinal directions -->
+    <text x="100" y="30" text-anchor="middle" font-weight="bold" font-size="16">N (0°)</text>
+    <text x="190" y="105" text-anchor="start" font-weight="bold" font-size="14">E (90°)</text>
+    <text x="100" y="190" text-anchor="middle" font-weight="bold" font-size="14">S (180°)</text>
+    <text x="10" y="105" text-anchor="end" font-weight="bold" font-size="14">W (270°)</text>
+    
+    <!-- Example arrow at 45° -->
+    <line x1="100" y1="100" x2="156" y2="44" stroke="#E91E63" stroke-width="3" marker-end="url(#arrowhead)"/>
+    <text x="170" y="40" font-size="14" fill="#E91E63" font-weight="bold">45° NE</text>
+    
+    <!-- Phone icon -->
+    <rect x="85" y="85" width="30" height="50" rx="5" fill="#2196F3" opacity="0.7"/>
+    <circle cx="100" cy="95" r="3" fill="white"/>
+  </g>
+  
+  <!-- Pitch Section -->
+  <g transform="translate(500, 100)">
+    <text x="0" y="-10" font-size="18" font-weight="bold">Pitch (Forward/Back Tilt)</text>
+    
+    <!-- Horizon line -->
+    <line x1="20" y1="100" x2="180" y2="100" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="190" y="105" font-size="12">Horizon</text>
+    
+    <!-- Phone at various pitches -->
+    <!-- Horizontal (0°) -->
+    <rect x="45" y="85" width="30" height="50" rx="5" fill="#4CAF50" opacity="0.7"/>
+    <text x="80" y="115" font-size="11">0°</text>
+    
+    <!-- Tilted forward (+30°) -->
+    <g transform="translate(100, 100) rotate(30) translate(-15, -25)">
+      <rect x="0" y="0" width="30" height="50" rx="5" fill="#FF9800" opacity="0.7"/>
+    </g>
+    <text x="115" y="140" font-size="11" fill="#FF9800">+30°</text>
+    <text x="115" y="152" font-size="9" fill="#FF9800">(forward)</text>
+    
+    <!-- Tilted back (-30°) -->
+    <g transform="translate(100, 100) rotate(-30) translate(-15, -25)">
+      <rect x="0" y="0" width="30" height="50" rx="5" fill="#9C27B0" opacity="0.7"/>
+    </g>
+    <text x="115" y="65" font-size="11" fill="#9C27B0">-30°</text>
+    <text x="115" y="77" font-size="9" fill="#9C27B0">(backward)</text>
+    
+    <!-- Arrows showing direction -->
+    <path d="M 75 60 Q 85 50, 95 60" fill="none" stroke="#9C27B0" stroke-width="2" marker-end="url(#arrowhead)"/>
+    <path d="M 75 140 Q 85 150, 95 140" fill="none" stroke="#FF9800" stroke-width="2" marker-end="url(#arrowhead)"/>
+  </g>
+  
+  <!-- Roll Section -->
+  <g transform="translate(150, 350)">
+    <text x="0" y="-10" font-size="18" font-weight="bold">Roll (Left/Right Tilt)</text>
+    
+    <!-- Horizon line -->
+    <line x1="20" y1="100" x2="180" y2="100" stroke="#666" stroke-width="1" stroke-dasharray="5,5"/>
+    <text x="190" y="105" font-size="12">Horizon</text>
+    
+    <!-- Phone at various rolls -->
+    <!-- Level (0°) -->
+    <rect x="45" y="75" width="30" height="50" rx="5" fill="#4CAF50" opacity="0.7"/>
+    <text x="80" y="105" font-size="11">0°</text>
+    
+    <!-- Tilted right (+30°) -->
+    <g transform="translate(120, 100) rotate(30 0 0)">
+      <rect x="-15" y="-25" width="30" height="50" rx="5" fill="#FF5722" opacity="0.7"/>
+    </g>
+    <text x="130" y="135" font-size="11" fill="#FF5722">+30°</text>
+    <text x="130" y="147" font-size="9" fill="#FF5722">(right)</text>
+    
+    <!-- Tilted left (-30°) -->
+    <g transform="translate(120, 100) rotate(-30 0 0)">
+      <rect x="-15" y="-25" width="30" height="50" rx="5" fill="#00BCD4" opacity="0.7"/>
+    </g>
+    <text x="130" y="65" font-size="11" fill="#00BCD4">-30°</text>
+    <text x="130" y="77" font-size="9" fill="#00BCD4">(left)</text>
+  </g>
+  
+  <!-- Combined Example -->
+  <g transform="translate(500, 350)">
+    <text x="0" y="-10" font-size="18" font-weight="bold">Real Example</text>
+    
+    <rect x="10" y="10" width="260" height="180" fill="#f0f0f0" stroke="#ccc" rx="5"/>
+    
+    <text x="20" y="35" font-size="14" font-weight="bold">Leaning Tree Measurement:</text>
+    
+    <text x="20" y="60" font-size="13">1. Stand at tree base</text>
+    <text x="20" y="80" font-size="13">2. Point phone toward lean</text>
+    <text x="20" y="100" font-size="13">3. Capture orientation:</text>
+    
+    <rect x="30" y="110" width="220" height="65" fill="white" stroke="#4CAF50" stroke-width="2" rx="3"/>
+    <text x="40" y="130" font-size="12" font-family="monospace" fill="#1976D2">
+      Azimuth: 245.0° (SW)
+    </text>
+    <text x="40" y="148" font-size="12" font-family="monospace" fill="#1976D2">
+      Pitch: 15.5° (forward)
+    </text>
+    <text x="40" y="166" font-size="12" font-family="monospace" fill="#1976D2">
+      Roll: 2.1° (slight right)
+    </text>
+  </g>
+  
+  <!-- Legend -->
+  <g transform="translate(20, 550)">
+    <text x="0" y="0" font-size="11" fill="#666">
+      📍 Azimuth: 0° = North, 90° = East, 180° = South, 270° = West
+    </text>
+    <text x="0" y="15" font-size="11" fill="#666">
+      📐 Pitch: Positive = forward/down tilt, Negative = backward/up tilt
+    </text>
+    <text x="0" y="30" font-size="11" fill="#666">
+      🔄 Roll: Positive = right tilt, Negative = left tilt
+    </text>
+  </g>
+</svg>

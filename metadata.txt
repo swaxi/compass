@@ -1,0 +1,6 @@
+[general]
+name=Compass
+description=Captures phone's spatial orientation (compass heading and tilt angles) when saving data points in QField. Records azimuth (degrees from magnetic north), pitch (forward/backward tilt), and roll (left/right tilt) relative to horizontal.
+author=Mark Jessell
+version=1.0
+icon=compass_icon.svg
