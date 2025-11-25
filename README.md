@@ -159,7 +159,7 @@ The plugin adds **one red button** to QField's toolbar:
 1. Position and orient phone
 2. Place point and confirm
 3. **Form opens** (empty)
-4. **Click plugin button** 📍
+4. **Click plugin button** 🧭
 5. Fields fill immediately
 6. Save
 
