@@ -396,10 +396,7 @@ END
 
 ### Data Types
 
-All values saved as integers:
-```javascript
-Math.round(value)
-```
+All values saved as integers   
 
 Example:
 - Sensor: 245.73°
