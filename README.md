@@ -46,11 +46,11 @@ Download `main.qml` from this repository.
 - Upload it alongside your project using QFieldSync
 
 **For local projects:**
-- Place the `.qml` file in the same directory as your `.qgs` file
+- Rename to same name as project (with `.qml` instead of `.qgs`) and place the `.qml` file in the same directory as your `.qgs` file
 - Copy both to your device
 
-**For all QFIELD Projects** 
-Upload from zipfile via URL:
+**For all QField Projects** 
+Upload from zipfile via URL in Qfield App on your device in settings/plugins:
 https://github.com/swaxi/compass/archive/refs/heads/main.zip    
    
 ### 4. Restart QField
