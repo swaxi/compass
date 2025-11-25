@@ -50,7 +50,8 @@ Download `main.qml` from this repository.
 - Copy both to your device
 
 **For all QFIELD Projects** 
-Upload from zipfile via URL   
+Upload from zipfile via URL:
+https://github.com/swaxi/compass/archive/refs/heads/main.zip    
    
 ### 4. Restart QField
 
