@@ -518,9 +518,6 @@ A: Yes, standard QGIS export (CSV, Excel, Shapefile, etc.)
 **Q: Does it save photos?**
 A: No, but you can add a photo field to your layer separately.
 
-**Q: Can I use feet instead of degrees?**
-A: Angles are always in degrees (standard geological convention).
-
 **Q: What if my device doesn't have a compass?**
 A: Plugin won't work - compass is required for azimuth.
 
