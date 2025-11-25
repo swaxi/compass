@@ -11,7 +11,6 @@ A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip 
 - ✅ **Auto-fill orientation data** when creating new features
 - ✅ **Live sensor display** showing real-time values on button
 - ✅ **Geological calculations** - automatically calculates dip and dip direction from phone orientation
-- ✅ **Single-button interface** - clean, simple UI
 - ✅ **Toggle modes** - switch between auto and manual with long-press
 - ✅ **Works offline** - no internet connection required
 - ✅ **Cross-platform** - iOS and Android compatible
