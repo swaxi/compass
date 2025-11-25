@@ -27,6 +27,8 @@ A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip 
 - **Dip** (0-90°) - Angle of plane from horizontal
 - **Dip Direction** (0-360°) - Azimuth of steepest descent
 - **Strike** (0-360°) - Direction perpendicular to dip
+- **Azimuth** (0-360°) - Compass heading from magnetic north
+- **Plunge** (0-90°) - Plunge of linear feature
 
 All values are saved as **integers** (whole numbers).
 
@@ -34,20 +36,13 @@ All values are saved as **integers** (whole numbers).
 
 ### 1. Download the Plugin
 
-Download `main_geology_simple.qml` from this repository.
+Download `main.qml` from this repository.
 
-### 2. Rename the File
 
-The plugin file **must** have the same name as your QGIS project file:
-
-```
-Your project: geology_survey.qgs
-Plugin name:  geology_survey.qml
-```
-
-### 3. Place the File
+### 2. Place the File
 
 **For QFieldCloud projects:**
+
 - Place the `.qml` file in your project folder in QGIS
 - Upload it alongside your project using QFieldSync
 
@@ -55,6 +50,9 @@ Plugin name:  geology_survey.qml
 - Place the `.qml` file in the same directory as your `.qgs` file
 - Copy both to your device
 
+**For all QFIELD Projects** 
+Upload from zipfile via URL   
+   
 ### 4. Restart QField
 
 Open QField and load your project. Grant permission when prompted.
@@ -63,9 +61,9 @@ Open QField and load your project. Grant permission when prompted.
 
 ## QGIS Project Setup
 
-### Required Fields
+### Fields
 
-Add these fields to your point layer in QGIS:
+Add desired fields to your point layer in QGIS:
 
 | Field Name | Type | Description |
 |------------|------|-------------|
@@ -74,6 +72,7 @@ Add these fields to your point layer in QGIS:
 | `dip` | Integer | Dip angle (0-90°) |
 | `dip_direction` or `dip_dir` | Integer | Dip direction (0-360°) |
 | `strike` | Integer | Strike direction (0-360°) |
+| `plunge` | Integer | Lineation plunge (0-90°) |
 
 **Optional fields:**
 - `roll` - Side tilt angle
@@ -89,7 +88,9 @@ CREATE TABLE orientations (
     plunge INTEGER,
     dip INTEGER,
     dip_dir INTEGER,
+    plunge INTEGER,
     strike INTEGER,
+    
     notes TEXT
 );
 ```
@@ -98,7 +99,7 @@ CREATE TABLE orientations (
 
 In QGIS: Layer → New Shapefile Layer
 - Geometry: Point
-- Add Integer fields: azimuth, plunge, dip, dip_dir, strike
+- Add Integer fields: azimuth, plunge, dip, dip_dir, strike, plunge
 
 ### Field Configuration in QGIS
 
@@ -127,10 +128,10 @@ The plugin adds **one red button** to QField's toolbar:
 ┌──────────────┐
 │    📍  Ⓐ    │  ← Pin icon + Auto indicator (A=auto, M=manual)
 │              │
-│  Az:245°     │  ← Live azimuth value
+│  Az: 45°     │  ← Live azimuth value
 │  Plunge:15°  │  ← Live pitch/plunge value
 │  Dip:35°     │  ← Live dip angle
-│  Dir:127°    │  ← Live dip direction
+│  Dip_Dir:135°│  ← Live dip direction
 └──────────────┘
 ```
 
@@ -202,6 +203,9 @@ The plugin recognizes these field names (case-insensitive):
 
 ### Strike
 - `strike`
+
+### Plunge
+- `plunge`
 
 **Note:** You don't need all fields - the plugin will fill whatever fields exist.
 
@@ -315,7 +319,6 @@ Long-press the button to toggle auto-fill ON.
 
 You can use alternative field names:
 - `compass` instead of `azimuth`
-- `plunge` instead of `pitch`
 - `dip_dir` instead of `dip_direction`
 
 The plugin will find and fill whatever matches.
@@ -372,6 +375,7 @@ END
 - dip (Integer) ← Auto-filled
 - dip_dir (Integer) ← Auto-filled
 - strike (Integer) ← Auto-filled
+- plunge (Integer) ← Auto-filled
 - notes (Text)
 - photo (Text, Attachment widget)
 
