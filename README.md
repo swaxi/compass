@@ -5,7 +5,9 @@ A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip 
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![QField](https://img.shields.io/badge/QField-3.x-green)
 ![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)
-
+   
+![SGTools image](screen.png)    
+   
 ## Features
 
 - ✅ **Auto-fill orientation data** when creating new features
