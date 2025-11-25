@@ -547,10 +547,9 @@ MIT - use freely for geological fieldwork, see licence info for more details.
 
 ### v1.0 (Current)
 - Initial release
-- Single-button interface
 - Auto-fill and manual modes
 - Live sensor display
-- Geological calculations (dip, dip direction, strike)
+- Geological calculations (dip, dip direction, strike, plunge)
 - Integer value output
 - Cross-platform support
 
