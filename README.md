@@ -333,7 +333,7 @@ Result: Plugin fills both
 **Azimuth and Plunge Only:**
 ```
 Fields: azimuth, plunge
-Result: Plugin fills both (geological measurements not saved)
+Result: Plugin fills both (other geological measurements not saved)
 ```
 
 ### Using with QGIS Expressions
