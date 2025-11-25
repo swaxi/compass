@@ -1,4 +1,4 @@
-# QField Geological Orientation Plugin
+# QField Geological Compass Plugin
 
 A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip direction, strike) using your device's sensors during fieldwork.
 
