@@ -592,4 +592,4 @@ Built using:
 
 ---
 
-**Happy geological mapping! 🪨📐**
+**Happy geological mapping!**
