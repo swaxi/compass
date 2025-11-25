@@ -584,13 +584,13 @@ Built using:
 │                                         │
 │  FIELDS (Integer):                      │
 │  azimuth, plunge, dip,                  │
-│  dip_dir, strike                        │
+│  dip_dir, strike, plunge, pitch, roll   │
 │                                         │
 │  WORKFLOW:                              │
 │  1. Position phone on surface           │
-│  2. Place point (red pin)               │
-│  3. Confirm (green ✓)                   │
-│  4. Form auto-fills!                    │
+│  2. Place point (Green crosshair)       │
+│  3. Form auto-fills!                    │
+│  4. Confirm (green ✓)                   │
 │  5. Save                                │
 └─────────────────────────────────────────┘
 ```
