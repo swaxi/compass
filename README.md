@@ -565,6 +565,7 @@ Built using:
 - QField plugin framework
 - Qt Sensors (Compass, Accelerometer)
 - QGIS/QField ecosystem
+- Claude AI
 
 ---
 
