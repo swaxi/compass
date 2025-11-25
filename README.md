@@ -148,10 +148,10 @@ The plugin adds **one red button** to QField's toolbar:
 
 1. **Position your phone** against the rock surface
 2. **Orient phone** so top points up-dip direction
-3. **Tap red pin** (crosshair) in QField to place point
-4. **Click green checkmark** (✓) to confirm
-5. **Form opens** → Fields auto-fill automatically!
-6. **Fill other attributes** (notes, rock type, etc.)
+3. **Tap Green Crosshair** in QField to place point
+4. **Form opens** → Fields auto-fill automatically!
+5. **Fill other attributes** (notes, rock type, etc.)
+6. **Click green checkmark** (✓) to confirm
 7. **Save**
 
 **Manual Mode:**
@@ -159,19 +159,17 @@ The plugin adds **one red button** to QField's toolbar:
 1. Position and orient phone
 2. Place point and confirm
 3. **Form opens** (empty)
-4. **Click plugin button** 🧭
-5. Fields fill immediately
-6. Save
+4. Fill fields manually 
+5. Save
 
 ### Button Actions
 
 **Short Click (Tap):**
-- If form is open → Fills fields with current values
-- If form not open → Shows current sensor readings
+- Shows current sensor readings
 
 **Long Press (Hold ~1 second):**
 - Toggles between auto and manual mode
-- Shows confirmation toast
+- Shows confirmation message
 
 ---
 
