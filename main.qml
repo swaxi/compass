@@ -86,9 +86,13 @@ Item {
         var dipDirection = Math.atan2(g_east, g_north) * 180 / Math.PI
         if (dipDirection < 0) dipDirection += 360
         
+        // SOUTHERN HEMISPHERE (magnetic): No correction
         // Add 180° to get downdip direction (Southern Hemisphere correction)
         dipDirection = (dipDirection + 180) % 360
-        
+
+        // NORTHERN HEMISPHERE (magnetic): No correction NEEDED SO COMMENT OUT LINE:  dipDirection = (dipDirection + 180) % 360
+        // (dipDirection is already correct)  
+
         var strike = dipDirection - 90
         if (strike < 0) strike += 360
         
@@ -300,7 +304,7 @@ Item {
                     Text {
                         text: {
                             var data = getOrientationData()
-                            return "Dir:" + Math.round(data.dipDirection) + "°"
+                            return "Dip Dir:" + Math.round(data.dipDirection) + "°"
                         }
                         font.pixelSize: 10
                         font.bold: true
