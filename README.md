@@ -20,15 +20,15 @@ A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip 
 ## What It Captures
 
 ### Phone Orientation (Raw Sensors)
-- **Azimuth** (0-360°) - Compass heading from magnetic north
+- **Azimuth** (0-360°) - Compass heading from true north (if declination set correctly)
 - **Pitch/Plunge** (-90° to +90°) - Forward/backward tilt
 - **Roll** (-90° to +90°) - Left/right tilt
 
 ### Geological Measurements (Calculated)
 - **Dip** (0-90°) - Angle of plane from horizontal
-- **Dip Direction** (0-360°) - Azimuth of steepest descent
-- **Strike** (0-360°) - Direction perpendicular to dip
-- **Azimuth** (0-360°) - Compass heading from magnetic north
+- **Dip Direction** (0-360°) - Azimuth of steepest descent from true north (if declination set correctly)
+- **Strike** (0-360°) - Direction perpendicular to dip from true north (if declination set correctly)
+- **Azimuth** (0-360°) - Compass heading from true north (if declination set correctly)
 - **Plunge** (0-90°) - Plunge of linear feature
 
 All values are saved as **integers** (whole numbers).
@@ -140,11 +140,11 @@ In QGIS: Layer → New Shapefile Layer
 
 ### The Button
 
-The plugin adds **one red button** to QField's toolbar:
+The plugin adds **one red square button** to QField's toolbar:
 
 ```
 ┌──────────────┐
-│    🧭  Ⓐ    │  ← Pin icon + Auto indicator (A=auto, M=manual)
+│       🧭  Ⓐ │  ← Compass icon + Auto indicator (A=auto, M=manual)
 │              │
 │  Az: 45°     │  ← Live azimuth value
 │  Plunge:15°  │  ← Live pitch/plunge value
@@ -165,26 +165,22 @@ The plugin adds **one red button** to QField's toolbar:
 
 **With Auto-Fill (Default):**
 
-1. **Position your phone** against the rock surface
-2. **Orient phone** so top points up-dip direction
-3. **Tap Green Crosshair** in QField to place point
-4. **Form opens** → Fields auto-fill automatically!
-5. **Fill other attributes** (notes, rock type, etc.)
-6. **Click green checkmark** (✓) to confirm
-7. **Save**
+1. **Position your phone** against the rock surface (with long side of phone parallel to lineation if present)
+2. **Tap Green Crosshair** in QField to place point
+3. **Form opens** → Fields auto-fill automatically!
+4. **Fill other attributes** (notes, rock type, etc.)
+5. **Click green checkmark** (✓) to confirm
+6. **Save**
 
 **Manual Mode:**
 
-1. Position and orient phone
+1. Position and orient phone and note values (or use your own compass)
 2. Place point and confirm
 3. **Form opens** (empty)
 4. Fill fields manually 
-5. Save
+5. **Save**
 
-### Button Actions
-
-**Short Click (Tap):**
-- Shows current sensor readings
+### Button Action
 
 **Long Press (Hold ~1 second):**
 - Toggles between auto and manual mode
@@ -192,18 +188,18 @@ The plugin adds **one red button** to QField's toolbar:
 
 ---
 
-## Field Mapping
+## Layer Field Mapping
 
-The plugin recognizes these field names (case-insensitive):
+The plugin recognizes these layer field names (case-insensitive):
 
 ### Azimuth
 - `azimuth`
 - `compass`
 - `heading`
 
-### Pitch/Plunge
-- `pitch`
+### Plunge
 - `plunge`
+- `plongement`
 
 ### Roll
 - `roll`
@@ -211,6 +207,7 @@ The plugin recognizes these field names (case-insensitive):
 ### Dip
 - `dip`
 - `dip_angle`
+- `pendage`
 
 ### Dip Direction
 - `dip_direction`
@@ -218,10 +215,8 @@ The plugin recognizes these field names (case-insensitive):
 - `dip_dir`
 
 ### Strike
-- `strike`
+- `strike_rhr`
 
-### Plunge
-- `plunge`
 
 **Note:** You don't need all fields - the plugin will fill whatever fields exist.
 
@@ -235,48 +230,6 @@ The plugin uses your device's built-in sensors:
 
 1. **Compass** - Provides magnetic azimuth (0-360°)
 2. **Accelerometer** - Provides device tilt (X, Y, Z acceleration)
-
-### Geological Calculations
-
-From the raw sensor data, the plugin calculates:
-
-**Dip Angle:**
-```
-1. Calculate normal vector to phone screen
-2. Dip = angle from horizontal
-3. Result: 0° (flat) to 90° (vertical)
-```
-
-**Dip Direction:**
-```
-1. Azimuth of steepest descent
-2. Opposite direction if normal points up
-3. Result: 0-360°
-```
-
-**Strike:**
-```
-Strike = (Dip Direction + 90°) mod 360°
-```
-
-### Measurement Technique
-
-For accurate measurements:
-
-1. **Hold phone flat** against the planar surface
-2. **Top of phone** should point up-dip (upslope)
-3. **Screen facing you** or away (doesn't matter)
-4. **Keep phone still** while capturing
-
-### Magnetic Declination
-
-The plugin uses **magnetic north**, not true north. For Perth, Western Australia:
-- Magnetic declination: ~0° (negligible)
-- No correction needed
-
-For other locations, you may need to correct azimuth values in post-processing.
-
----
 
 ## Troubleshooting
 
@@ -329,97 +282,13 @@ Long-press the button to toggle auto-fill ON.
 
 ---
 
-## Advanced Usage
-
-### Multiple Field Sets
-
-You can use alternative field names:
-- `compass` instead of `azimuth`
-- `dip_dir` instead of `dip_direction`
-
-The plugin will find and fill whatever matches.
-
-### Partial Data Collection
-
-You don't need all fields. Common combinations:
-
-**Strike and Dip Only:**
-```
-Fields: strike, dip
-Result: Plugin fills both
-```
-
-**Azimuth and Plunge Only:**
-```
-Fields: azimuth, plunge
-Result: Plugin fills both (other geological measurements not saved)
-```
-
-### Using with QGIS Expressions
-
-You can calculate additional values in QGIS:
-
-**True Strike from Dip Direction:**
-```qgis
-("dip_dir" + 90) % 360
-```
-
-**Dip Quadrant (N, S, E, W):**
-```qgis
-CASE
-  WHEN "dip_dir" < 90 THEN 'NE'
-  WHEN "dip_dir" < 180 THEN 'SE'
-  WHEN "dip_dir" < 270 THEN 'SW'
-  ELSE 'NW'
-END
-```
-
----
-
-## Example Project
-
-### Sample QGIS Setup
-
-**Layer:** Outcrops (Point)
-
-**Fields:**
-- fid (Integer, Auto-increment)
-- location_name (Text)
-- rock_type (Text)
-- azimuth (Integer) ← Auto-filled
-- plunge (Integer) ← Auto-filled
-- dip (Integer) ← Auto-filled
-- dip_dir (Integer) ← Auto-filled
-- strike (Integer) ← Auto-filled
-- plunge (Integer) ← Auto-filled
-- notes (Text)
-- photo (Text, Attachment widget)
-
-**Workflow:**
-1. Add outcrop point
-2. Plugin auto-fills orientation data
-3. Fill rock type from dropdown
-4. Add photo
-5. Add notes
-6. Save
-
----
-
 ## Technical Details
 
 ### Coordinate Systems
 
-- **Azimuth Reference:** Magnetic North
-- **Angle Convention:** Right-hand rule
+- **Azimuth Reference:** True North if correct declination defined
+- **Angle Convention:** Right-hand rule for strike
 - **Range:** 0-360° (azimuth, dip_dir, strike), 0-90° (dip), -90 to +90° (pitch/plunge, roll)
-
-### Data Types
-
-All values saved as integers   
-
-Example:
-- Sensor: 245.73°
-- Saved: 246°
 
 ### Sensor Update Rate
 
@@ -447,7 +316,7 @@ Example:
 
 ### Before Fieldwork
 
-1. ✅ Test plugin in office
+1. ✅ Test plugin in office (set correct decinaiton and hemisphere calcs)
 2. ✅ Calibrate compass (figure-8 motion)
 3. ✅ Practice measurement technique
 4. ✅ Verify data types in QGIS
@@ -456,10 +325,9 @@ Example:
 ### During Fieldwork
 
 1. 📱 Keep phone flat against surface
-2. 🧭 Point top of phone up-dip
-3. ⏱️ Hold steady for 1-2 seconds
-4. 🔍 Check live values look reasonable
-5. 💾 Save immediately after capture
+2. ⏱️ Hold steady for 1-2 seconds
+3. 🔍 Check live values look reasonable
+4. ✅ Save point measurement
 
 ### After Fieldwork
 
@@ -471,25 +339,6 @@ Example:
 
 ---
 
-## Geological Notation
-
-The plugin outputs data compatible with standard geological notation:
-
-**Strike/Dip Notation:**
-```
-Strike: 217°
-Dip: 35°
-Dip Direction: 127°
-
-Written as: 217°/35°→127°
-Or: Strike 217°, Dip 35° SE
-```
-
-**Right-Hand Rule:**
-- Face direction of dip
-- Right hand points along strike
-
----
 
 ## Compatibility
 
