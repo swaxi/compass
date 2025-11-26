@@ -84,6 +84,11 @@ Item {
         
         // Dip direction is where gravity's horizontal projection points
         var dipDirection = Math.atan2(g_east, g_north) * 180 / Math.PI
+
+        // User defined Declination
+        var localDeclination = -1.5
+
+        dipDirection = dipDirection + localDeclination
         if (dipDirection < 0) dipDirection += 360
         
         // SOUTHERN HEMISPHERE (magnetic): No correction
