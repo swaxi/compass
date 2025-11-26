@@ -40,13 +40,22 @@ All values are saved as **integers** (whole numbers).
 Download `main.qml` from this repository.
 
 
-### 2. Magnetic Northern Hemisphere Correction!!
+### 2. User-defined parameters 
+#### Declination Correction
+Open `mail.qml` in a text editor and edit declination value on line 89 so it looks like this:   
+
+
+       var localDeclination = -1.5   
+       
+#### Magnetic Northern Hemisphere Correction
 
 Open `mail.qml` in a text editor and comment out (add # to start of line) line 91 so it looks like this:   
 
 
        # dipDirection = (dipDirection + 180) % 360   
 
+
+   
 ### 3. Load the File into QField
 
 **For QFieldCloud projects:**
