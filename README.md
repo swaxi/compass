@@ -441,7 +441,6 @@ Built using:
 │  ⚫ Gray + M = Manual                   │
 │                                         │
 │  ACTIONS:                               │
-│  Tap = Fill fields                      │
 │  Hold = Toggle auto/manual              │
 │                                         │
 │  FIELDS (Integer):                      │
