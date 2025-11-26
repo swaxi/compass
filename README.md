@@ -45,7 +45,7 @@ Download `main.qml` from this repository.
 Open `mail.qml` in a text editor and comment out (add # to start of line) line 91 so it looks like this:   
 
 
-       `# dipDirection = (dipDirection + 180) % 360`   
+       # dipDirection = (dipDirection + 180) % 360   
 
 ### 3. Load the File into QField
 
