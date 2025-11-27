@@ -176,8 +176,7 @@ The plugin adds **one red square button** to QField's toolbar:
 2. **Tap Green Crosshair** in QField to place point
 3. **Form opens** → Fields auto-fill automatically!
 4. **Fill other attributes** (notes, rock type, etc.)
-5. **Click green checkmark** (✓) to confirm
-6. **Save**
+5. **Click checkmark** (✓) to confirm
 
 **Manual Mode:**
 
@@ -185,7 +184,7 @@ The plugin adds **one red square button** to QField's toolbar:
 2. Place point and confirm
 3. **Form opens** (empty)
 4. Fill fields manually 
-5. **Save**
+5. **Click checkmark** (✓) to confirm
 
 ---
 
