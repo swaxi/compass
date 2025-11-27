@@ -147,7 +147,7 @@ The plugin adds **one red square button** to QField's toolbar:
 │       🧭  Ⓐ │  ← Compass icon + Auto indicator (A=auto, M=manual)
 │              │
 │ Az: 45°      │  ← Live azimuth value
-│ Plunge:15°   │  ← Live pitch/plunge value
+│ Plunge:15°   │  ← Live plunge value
 │ Dip:35°      │  ← Live dip angle
 │ Dip Dir:135° │  ← Live dip direction
 └──────────────┘
