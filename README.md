@@ -316,7 +316,7 @@ Long-press the button to toggle auto-fill ON.
 
 ### Before Fieldwork
 
-1. ✅ Test plugin in office (set correct declinaiton and hemisphere info)
+1. ✅ Test plugin in office (after setting correct declination and hemisphere info)
 2. ✅ Calibrate compass (figure-8 motion)
 3. ✅ Practice measurement technique
 4. ✅ Verify data types in QGIS
