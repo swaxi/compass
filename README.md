@@ -43,17 +43,18 @@ Download `main.qml` from this repository.
 
 ### 2. User-defined parameters 
 #### Declination Correction
-Open `mail.qml` in a text editor and edit declination value on line 89 so it has your local declination:   
+Open `mail.qml` in a text editor and edit declination value on line 10 so it has your local declination:   
 
 
-       var localDeclination = -1.5   
+      property real magneticDeclination: -1.5  // Your custom value   
 
 #### Magnetic Northern Hemisphere Correction
 
-Open `mail.qml` in a text editor and comment out (add # to start of line) line 91 so it looks like this:   
+Open `mail.qml` in a text editor and change line 11 so it looks like this:   
 
 
-       # dipDirection = (dipDirection + 180) % 360   
+      property bool northernHemisphere: true  // Your custom value
+   
 
 
    

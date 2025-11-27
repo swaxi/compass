@@ -6,6 +6,11 @@ import org.qfield
 Item {
     id: root
     
+    // User-configurable settings
+    property real magneticDeclination: -1.5  // Your custom value
+    property bool northernHemisphere: false  // Your custom value
+
+    // Do not edit past this line
     property var mainWindow: iface.mainWindow()
     property var overlayFeatureFormDrawer: iface.findItemByObjectName('overlayFeatureFormDrawer')
     
@@ -85,18 +90,9 @@ Item {
         // Dip direction is where gravity's horizontal projection points
         var dipDirection = Math.atan2(g_east, g_north) * 180 / Math.PI
 
-        // User defined Declination
-        var localDeclination = -1.5
-
-        dipDirection = dipDirection + localDeclination
+        dipDirection = dipDirection + magneticDeclination
         if (dipDirection < 0) dipDirection += 360
-        
-        // SOUTHERN HEMISPHERE (magnetic): No correction
-        // Add 180° to get downdip direction (Southern Hemisphere correction)
-        dipDirection = (dipDirection + 180) % 360
 
-        // NORTHERN HEMISPHERE (magnetic): No correction NEEDED SO COMMENT OUT LINE:  dipDirection = (dipDirection + 180) % 360
-        // (dipDirection is already correct)  
 
         var strike = dipDirection - 90
         if (strike < 0) strike += 360
@@ -133,6 +129,7 @@ Item {
         var plunge = getPlunge()
         var geo = calculateGeologicalDip(azimuth)
         
+        if (northernHemisphere) azimuth=(azimuth+180)%360
         return {
             azimuth: azimuth,
             pitch: pitch,
