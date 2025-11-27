@@ -404,7 +404,7 @@ Suggestions and improvements welcome!
 
 ### License
 
-MIT - use freely for geological fieldwork, see licence info for more details.
+MIT - see licence info for more details.
 
 ---
 
