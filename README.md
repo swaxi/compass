@@ -21,8 +21,9 @@ A QField plugin for capturing geological orientations (azimuth, plunge, dip, dip
 
 ### Phone Orientation (Raw Sensors)
 - **Azimuth** (0-360°) - Compass heading from true north (if declination set correctly)
-- **Pitch/Plunge** (-90° to +90°) - Forward/backward tilt
-- **Roll** (-90° to +90°) - Left/right tilt
+- **Yaw** (-90° to +90°) - Rotation axis normal to screen 
+- **Pitch** (-90° to +90°) - Rotation axis up/down facing screen
+- **Roll** (-90° to +90°) - Rotation axis left/right facing screen
 
 ### Geological Measurements (Calculated)
 - **Dip** (0-90°) - Angle of plane from horizontal
