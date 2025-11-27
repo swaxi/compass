@@ -6,7 +6,7 @@ A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip 
 ![QField](https://img.shields.io/badge/QField-3.x-green)
 ![Platform](https://img.shields.io/badge/platform-iOS%20%7C%20Android-lightgrey)
    
-![SGTools image](screen.png)    
+![Screen image](screen.png)    
    
 ## Features
 
@@ -173,7 +173,7 @@ The plugin adds **one red square button** to QField's toolbar:
 **With Auto-Fill (Default):**
 
 1. **Position your phone** against the rock surface (with long side of phone parallel to lineation if present)
-2. **Tap Green Crosshair** in QField to place point
+2. **Tap Green Crosshair** ![Cross-hair](cross-hair.png) in QField to place point
 3. **Form opens** → Fields auto-fill automatically!
 4. **Fill other attributes** (notes, rock type, etc.)
 5. **Click checkmark** (✓) to confirm
