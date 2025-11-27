@@ -234,8 +234,13 @@ The plugin recognizes these layer field names (case-insensitive):
 The plugin uses your device's built-in sensors:
 
 1. **Compass** - Provides magnetic azimuth (0-360°)
-2. **Accelerometer** - Provides device tilt (X, Y, Z acceleration)
-
+2. **Accelerometer** - Provides device tilt (X, Y, Z acceleration)   
+   
+This is provided to the software as:   
+- **Roll:** The angle of rotation around the axis that runs through the top and bottom of the phone. For example, tilting the phone to its side.
+- **Pitch:** The angle of rotation around the axis that runs through the sides of the phone (where the volume buttons are). For example, tilting the phone forward or backward.
+- **Yaw:** The angle of rotation around the axis that runs perpendicular to the iphone screen. For example, twisting the phone horizontally. 
+   
 ## Troubleshooting
 
 ### Fields Don't Auto-Fill
