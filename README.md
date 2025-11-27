@@ -307,7 +307,7 @@ Long-press the button to toggle auto-fill ON.
 - Roll: ±2°
 - Dip: ±5°
 - Dip Direction: ±5°
-- Pitch: ±5°
+- Pitch: ±10° (depends on dip of the surface)
 - Plunge: ±5°
 
 **Factors affecting accuracy:**
