@@ -372,10 +372,10 @@ A: No, works completely offline.
 A: Yes, if tablet has compass and accelerometer.
 
 **Q: Can I use it for structural geology?**
-A: Yes! Perfect for measuring bedding, foliation, joints, faults.
+A: Yes! Perfect for measuring bedding, foliation, joints, faults, lineations.
 
 **Q: What about true north vs magnetic north?**
-A: Plugin uses magnetic north. Apply declination correction in post-processing if needed.
+A: Plugin uses True north assuming correct declination has been set.
 
 **Q: Can I export data?**
 A: Yes, standard QGIS export (CSV, Excel, Shapefile, etc.)
