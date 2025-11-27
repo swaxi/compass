@@ -1,6 +1,6 @@
 # QField Geological Compass Plugin
 
-A QField plugin for capturing geological orientations (azimuth, pitch, dip, dip direction, strike) using your device's sensors during fieldwork.
+A QField plugin for capturing geological orientations (azimuth, plunge, dip, dip direction, strike) using your device's sensors during fieldwork.
 
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![QField](https://img.shields.io/badge/QField-3.x-green)
