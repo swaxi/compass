@@ -162,8 +162,8 @@ Item {
                     feature.setAttribute(i, Math.round(orientation.azimuth))
                     populated = true
                 }
-                else if (fieldName === 'pitch' || fieldName === 'plunge') {
-                    feature.setAttribute(i, Math.round(orientation.plunge))
+                else if (fieldName === 'pitch' ) {
+                    feature.setAttribute(i, Math.round(orientation.pitch))
                     populated = true
                 }
                 else if (fieldName === 'roll') {
