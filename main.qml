@@ -178,7 +178,7 @@ Item {
                     feature.setAttribute(i, Math.round(orientation.dipDirection))
                     populated = true
                 }
-                else if (fieldName === 'strike_rhr') {
+                else if (fieldName === 'strike_rhr' || fieldName === 'strike') {
                     feature.setAttribute(i, Math.round(orientation.strike))
                     populated = true
                 }

@@ -146,21 +146,28 @@ The plugin adds **one red square button** to QField's toolbar:
 ┌──────────────┐
 │       🧭  Ⓐ │  ← Compass icon + Auto indicator (A=auto, M=manual)
 │              │
-│  Az: 45°     │  ← Live azimuth value
-│  Plunge:15°  │  ← Live pitch/plunge value
-│  Dip:35°     │  ← Live dip angle
-│  Dip_Dir:135°│  ← Live dip direction
+│ Az: 45°      │  ← Live azimuth value
+│ Plunge:15°   │  ← Live pitch/plunge value
+│ Dip:35°      │  ← Live dip angle
+│ Dip Dir:135° │  ← Live dip direction
 └──────────────┘
 ```
+
+### Button Action
+
+**Long Press (Hold ~1 second):**
+- Toggles between auto and manual mode
+- Shows confirmation message
 
 **Button color:**
 - 🔴 **Red** = Auto-fill ON (default)
 - ⚫ **Gray** = Manual mode
 
 **Indicator:**
-- 🟢 **"A"** = Auto-fill enabled
+- 🟢 **"A"** = Auto-fill ON
 - ⚫ **"M"** = Manual mode
 
+   
 ### Basic Workflow
 
 **With Auto-Fill (Default):**
@@ -180,12 +187,6 @@ The plugin adds **one red square button** to QField's toolbar:
 4. Fill fields manually 
 5. **Save**
 
-### Button Action
-
-**Long Press (Hold ~1 second):**
-- Toggles between auto and manual mode
-- Shows confirmation message
-
 ---
 
 ## Layer Field Mapping
@@ -196,12 +197,16 @@ The plugin recognizes these layer field names (case-insensitive):
 - `azimuth`
 - `compass`
 - `heading`
+- `azimut`
 
 ### Plunge
 - `plunge`
 - `plongement`
 
-### Roll
+### Pitch (warning this is the pitch of the device, not of a lineation)
+- `pitch`
+
+### Roll (of device)
 - `roll`
 
 ### Dip
@@ -216,6 +221,7 @@ The plugin recognizes these layer field names (case-insensitive):
 
 ### Strike
 - `strike_rhr`
+- `strike`
 
 
 **Note:** You don't need all fields - the plugin will fill whatever fields exist.
