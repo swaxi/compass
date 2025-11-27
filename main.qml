@@ -8,7 +8,7 @@ Item {
     
     // User-configurable settings
     property real magneticDeclination: -1.5  // Your custom value
-    property bool northernHemisphere: false  // Your custom value
+    property bool southernHemisphere: true  // Your custom value
 
     // Do not edit past this line
     property var mainWindow: iface.mainWindow()
@@ -91,6 +91,7 @@ Item {
         var dipDirection = Math.atan2(g_east, g_north) * 180 / Math.PI
 
         dipDirection = dipDirection + magneticDeclination
+        if (southernHemisphere) dipDirection=(dipDirection+180)%360
         if (dipDirection < 0) dipDirection += 360
 
 
@@ -128,8 +129,9 @@ Item {
         var roll = accelerometer.currentRoll
         var plunge = getPlunge()
         var geo = calculateGeologicalDip(azimuth)
-        
-        if (northernHemisphere) azimuth=(azimuth+180)%360
+        var geoPitch = (270+Math.atan2(accelerometer.currentX,accelerometer.currentY)*180/Math.PI)%180
+
+        if (southernHemisphere) azimuth=(azimuth+180)%360
         return {
             azimuth: azimuth,
             pitch: pitch,
@@ -137,7 +139,8 @@ Item {
             plunge: plunge,
             dip: geo.dip,
             dipDirection: geo.dipDirection,
-            strike: geo.strike
+            strike: geo.strike,
+            geoPitch: geoPitch
         }
     }
     
@@ -159,12 +162,12 @@ Item {
                     feature.setAttribute(i, Math.round(orientation.azimuth))
                     populated = true
                 }
-                else if (fieldName === 'pitch' ) {
-                    feature.setAttribute(i, Math.round(orientation.pitch))
-                    populated = true
-                }
                 else if (fieldName === 'roll') {
                     feature.setAttribute(i, Math.round(orientation.roll))
+                    populated = true
+                }                
+                else if (fieldName === 'pitch') {
+                    feature.setAttribute(i, Math.round(orientation.geoPitch))
                     populated = true
                 }
                 else if (fieldName === 'dip' || fieldName === 'dip_angle' || fieldName === 'pendage') {
@@ -182,7 +185,8 @@ Item {
                 else if (fieldName === 'plunge' || fieldName === 'plongement') {
                     feature.setAttribute(i, Math.round(orientation.plunge))
                     populated = true
-                }            }
+                }            
+            }
             
             if (populated) {
                 overlayFeatureFormDrawer.featureModel.feature = feature
@@ -236,7 +240,7 @@ Item {
         id: mainButtonComponent
         Button {
             width: 90
-            height: 110
+            height: 125
             
             background: Rectangle {
                 color: parent.pressed ? "#C62828" : (autoFillEnabled ? "#F44336" : "#9E9E9E")
@@ -283,6 +287,16 @@ Item {
                         color: "white"
                         anchors.horizontalCenter: parent.horizontalCenter
                     }
+                    Text {
+                        text: {
+                            var data = getOrientationData()
+                            return "Pitch:" + Math.round(data.geoPitch) + "°"
+                        }
+                        font.pixelSize: 10
+                        font.bold: true
+                        color: "white"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }                     
                     Text {
                         text: {
                             var data = getOrientationData()

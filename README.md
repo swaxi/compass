@@ -1,6 +1,6 @@
 # QField Geological Compass Plugin
 
-A QField plugin for capturing geological orientations (azimuth, plunge, dip, dip direction, strike) using your device's sensors during fieldwork.
+A QField plugin for capturing geological orientations (azimuth, plunge, pitch, dip, dip direction, strike) using your device's sensors during fieldwork.
 
 ![Version](https://img.shields.io/badge/version-1.0-blue)
 ![QField](https://img.shields.io/badge/QField-3.x-green)
@@ -19,18 +19,13 @@ A QField plugin for capturing geological orientations (azimuth, plunge, dip, dip
 
 ## What It Captures
 
-### Phone Orientation (Raw Sensors)
-- **Azimuth** (0-360°) - Compass heading from true north (if declination set correctly)
-- **Yaw** (-90° to +90°) - Rotation axis normal to screen 
-- **Pitch** (-90° to +90°) - Rotation axis up/down facing screen
-- **Roll** (-90° to +90°) - Rotation axis left/right facing screen
-
 ### Geological Measurements (Calculated)
 - **Dip** (0-90°) - Angle of plane from horizontal
 - **Dip Direction** (0-360°) - Azimuth of steepest descent from true north (if declination set correctly)
 - **Strike** (0-360°) - Direction perpendicular to dip from true north (if declination set correctly)
 - **Azimuth** (0-360°) - Compass heading from true north (if declination set correctly)
 - **Plunge** (0-90°) - Plunge of linear feature
+- **Pitch** (0-180°) - Pitch of linear feature (clockwise from right)
 
 All values are saved as **integers** (whole numbers).
 
@@ -53,7 +48,7 @@ Open `mail.qml` in a text editor and edit declination value on line 10 so it has
 Open `mail.qml` in a text editor and change line 11 so it looks like this:   
 
 
-      property bool northernHemisphere: true  // Your custom value
+      property bool southernHemisphere: false  // Your custom value
    
 
 
@@ -88,11 +83,11 @@ Add desired fields to your point layer in QGIS:
 | Field Name | Type | Description |
 |------------|------|-------------|
 | `azimuth` | Integer | Compass heading (0-360°) |
-| `pitch` or `plunge` | Integer | Forward/backward tilt (-90 to +90°) |
 | `dip` | Integer | Dip angle (0-90°) |
 | `dip_direction` or `dip_dir` | Integer | Dip direction (0-360°) |
 | `strike` | Integer | Strike direction (0-360°) |
 | `plunge` | Integer | Lineation plunge (0-90°) |
+| `pitch` | Integer | Lineation pitch (0-180°) clockwise from right |
 
 **Optional fields:**
 - `roll` - Side tilt angle
@@ -119,7 +114,7 @@ CREATE TABLE orientations (
 
 In QGIS: Layer → New Shapefile Layer
 - Geometry: Point
-- Add Integer fields: azimuth, plunge, dip, dip_dir, strike, plunge
+- Add Integer fields: azimuth, plunge, dip, dip_dir, strike, plunge, pitch
 
 ### Field Configuration in QGIS
 
@@ -150,6 +145,7 @@ The plugin adds **one red square button** to QField's toolbar:
 │              │
 │ Az: 45°      │  ← Live azimuth value
 │ Plunge:15°   │  ← Live plunge value
+│ Pitch:25°    │  ← Live pitch value
 │ Dip:35°      │  ← Live dip angle
 │ Dip Dir:135° │  ← Live dip direction
 └──────────────┘
@@ -204,11 +200,11 @@ The plugin recognizes these layer field names (case-insensitive):
 - `plunge`
 - `plongement`
 
-### Pitch (warning this is the pitch of the device, not of a lineation)
-- `pitch`
-
 ### Roll (of device)
 - `roll`
+
+### Pitch
+- `pitch`
 
 ### Dip
 - `dip`
@@ -238,10 +234,6 @@ The plugin uses your device's built-in sensors:
 1. **Compass** - Provides magnetic azimuth (0-360°)
 2. **Accelerometer** - Provides device tilt (X, Y, Z acceleration)   
    
-This is provided to the software as:   
-- **Roll:** The angle of rotation around the axis that runs through the top and bottom of the phone. For example, tilting the phone to its side.
-- **Pitch:** The angle of rotation around the axis that runs through the sides of the phone (where the volume buttons are). For example, tilting the phone forward or backward.
-- **Yaw:** The angle of rotation around the axis that runs perpendicular to the iphone screen. For example, twisting the phone horizontally. 
    
 ## Troubleshooting
 
@@ -300,7 +292,7 @@ Long-press the button to toggle auto-fill ON.
 
 - **Azimuth Reference:** True North if correct declination defined
 - **Angle Convention:** Right-hand rule for strike
-- **Range:** 0-360° (azimuth, dip_dir, strike), 0-90° (dip), -90 to +90° (pitch/plunge, roll)
+- **Range:** 0-360° (azimuth, dip_dir, strike), 0-90° (dip), -90 to +90° (plunge, roll)
 
 ### Sensor Update Rate
 
@@ -312,9 +304,11 @@ Long-press the button to toggle auto-fill ON.
 
 **Expected accuracy (calibrated device):**
 - Azimuth: ±5°
-- Pitch/Roll: ±2°
+- Roll: ±2°
 - Dip: ±5°
 - Dip Direction: ±5°
+- Pitch: ±5°
+- Plunge: ±5°
 
 **Factors affecting accuracy:**
 - Magnetic interference
@@ -394,6 +388,9 @@ A: Yes, standard QGIS export (CSV, Excel, Shapefile, etc.)
 
 **Q: Does it save photos?**
 A: No, but you can add a photo field to your layer separately.
+
+**Q: What is hte pitch convention?**
+A: Facing the surface to be measured, pitch is increasing clockwise from zero.
 
 **Q: What if my device doesn't have a compass?**
 A: Plugin won't work - compass is required for azimuth.
