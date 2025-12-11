@@ -170,11 +170,13 @@ Item {
                     feature.setAttribute(i, Math.round(orientation.geoPitch))
                     populated = true
                 }
-                else if (fieldName === 'dip' || fieldName === 'dip_angle' || fieldName === 'pendage') {
+                else if (fieldName === 'dip' || fieldName === 'dip_angle' || fieldName === 'pendage' ||
+                         fieldName === 'dip_ref') {
                     feature.setAttribute(i, Math.round(orientation.dip))
                     populated = true
                 }
-                else if (fieldName === 'dip_direction' || fieldName === 'dipdirection' || fieldName === 'dip_dir') {
+                else if (fieldName === 'dip_direction' || fieldName === 'dipdirection' || fieldName === 'dip_dir'
+                    || fieldName === 'dipdir_ref') {
                     feature.setAttribute(i, Math.round(orientation.dipDirection))
                     populated = true
                 }
