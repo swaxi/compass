@@ -83,8 +83,8 @@ Add desired fields to your point layer in QGIS:
 | Field Name | Type | Description |
 |------------|------|-------------|
 | `azimuth` | Integer | Compass heading (0-360°) |
-| `dip` | Integer | Dip angle (0-90°) |
-| `dip_direction` or `dip_dir` | Integer | Dip direction (0-360°) |
+| `dip` or `dip_ref`| Integer | Dip angle (0-90°) |
+| `dip_direction` or `dip_dir` or `dip_dir_ref` | Integer | Dip direction (0-360°) |
 | `strike` | Integer | Strike direction (0-360°) |
 | `plunge` | Integer | Lineation plunge (0-90°) |
 | `pitch` | Integer | Lineation pitch (0-180°) clockwise from right |
