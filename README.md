@@ -330,7 +330,7 @@ Long-press the button to toggle auto-fill ON.
 
 ### During Fieldwork
 
-1. 📱 Keep phone flat against surface
+1. 📱 Keep phone flat against surface or parallel to fold axial plane, align long axis of phone parallel to lineation
 2. ⏱️ Hold steady for 1-2 seconds
 3. 🔍 Check live values look reasonable
 4. ✅ Save point measurement
