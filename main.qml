@@ -180,7 +180,7 @@ Item {
                     feature.setAttribute(i, Math.round(orientation.dipDirection))
                     populated = true
                 }
-                else if (fieldName === 'strike_rhr' || fieldName === 'strike') {
+                else if (fieldName === 'strike_rhr' || fieldName === 'strike'|| fieldName === 'strike_ref') {
                     feature.setAttribute(i, Math.round(orientation.strike))
                     populated = true
                 }
@@ -242,7 +242,7 @@ Item {
         id: mainButtonComponent
         Button {
             width: 90
-            height: 125
+            height: 135
             
             background: Rectangle {
                 color: parent.pressed ? "#C62828" : (autoFillEnabled ? "#F44336" : "#9E9E9E")
@@ -283,6 +283,16 @@ Item {
                         text: {
                             var data = getOrientationData()
                             return "Az:" + Math.round(data.azimuth) + "°"
+                        }
+                        font.pixelSize: 10
+                        font.bold: true
+                        color: "white"
+                        anchors.horizontalCenter: parent.horizontalCenter
+                    }
+                    Text {
+                        text: {
+                            var data = getOrientationData()
+                            return "Strike:" + Math.round(data.azimuth+270)%360 + "°"
                         }
                         font.pixelSize: 10
                         font.bold: true
