@@ -8,13 +8,13 @@ Item {
     id: root
     
     // Field name mappings — add your own layer field names to any list
-    property var azimuthFieldNames:      ["azimuth", "azimut", "heading"]
+    property var azimuthFieldNames:      ["azimuth", "azimut", "heading", "L_plungeAzimuth"]
     property var rollFieldNames:         ["roll"]
     property var pitchFieldNames:        ["pitch"]
-    property var dipFieldNames:          ["dip", "dip_angle", "pendage", "dip_ref"]
-    property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref"]
-    property var strikeFieldNames:       ["strike_rhr", "strike", "strike_ref"]
-    property var plungeFieldNames:       ["plunge", "plongement"]
+    property var dipFieldNames:          ["dip", "dip_angle", "pendage", "dip_ref", "P_dip"]
+    property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref", "P_dipAzimuth"]
+    property var strikeFieldNames:       ["strike_rhr", "strike", "strike_ref", "P_strike"]
+    property var plungeFieldNames:       ["plunge", "plongement", "L_plunge"]
     property var skipFieldNames:         ["fid", "id", "objectid"]
 
     property var mainWindow: iface.mainWindow()
