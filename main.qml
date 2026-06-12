@@ -2,14 +2,11 @@ import QtQuick
 import QtQuick.Controls
 import QtSensors
 import org.qfield
+import Qt.labs.settings 1.0
 
 Item {
     id: root
     
-    // User-configurable settings
-    property real magneticDeclination: -1.5  // Your custom value
-    property bool southernHemisphere: true   // Your custom value
-
     // Field name mappings — add your own layer field names to any list
     property var azimuthFieldNames:      ["azimuth", "azimut", "heading"]
     property var rollFieldNames:         ["roll"]
@@ -18,11 +15,76 @@ Item {
     property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref"]
     property var strikeFieldNames:       ["strike_rhr", "strike", "strike_ref"]
     property var plungeFieldNames:       ["plunge", "plongement"]
-
-    // Do not edit past this line
     property var skipFieldNames:         ["fid", "id", "objectid"]
+
     property var mainWindow: iface.mainWindow()
     property var overlayFeatureFormDrawer: iface.findItemByObjectName('overlayFeatureFormDrawer')
+
+    // Persistent settings — edited via the ⚙ button in QField's plugin manager
+    Settings {
+        id: pluginSettings
+        category: "CompassPlugin"
+        property real magneticDeclination: -1.5
+        property bool southernHemisphere: true
+    }
+
+    function configure() {
+        configDialog.open()
+    }
+
+    Dialog {
+        id: configDialog
+        parent: iface.mainWindow().contentItem
+        anchors.centerIn: parent
+        visible: false
+        modal: true
+        title: "Compass Plugin Settings"
+        standardButtons: Dialog.Ok | Dialog.Cancel
+
+        Column {
+            spacing: 16
+            width: 300
+            topPadding: 8
+
+            Column {
+                width: parent.width
+                spacing: 4
+                Text {
+                    text: "Magnetic Declination (°)"
+                    font.pixelSize: 14
+                }
+                TextField {
+                    id: declinationField
+                    width: parent.width
+                    inputMethodHints: Qt.ImhFormattedNumbersOnly
+                    placeholderText: "e.g. -1.5"
+                }
+            }
+
+            Row {
+                spacing: 12
+                Text {
+                    text: "Southern Hemisphere"
+                    font.pixelSize: 14
+                    anchors.verticalCenter: parent.verticalCenter
+                }
+                Switch {
+                    id: hemisphereSwitch
+                }
+            }
+        }
+
+        onOpened: {
+            declinationField.text = pluginSettings.magneticDeclination.toString()
+            hemisphereSwitch.checked = pluginSettings.southernHemisphere
+        }
+
+        onAccepted: {
+            var dec = parseFloat(declinationField.text)
+            if (!isNaN(dec)) pluginSettings.magneticDeclination = dec
+            pluginSettings.southernHemisphere = hemisphereSwitch.checked
+        }
+    }
     
     Compass {
         id: compass
@@ -100,8 +162,8 @@ Item {
         // Dip direction is where gravity's horizontal projection points
         var dipDirection = Math.atan2(g_east, g_north) * 180 / Math.PI
 
-        dipDirection = dipDirection + magneticDeclination
-        if (southernHemisphere) dipDirection=(dipDirection+180)%360
+        dipDirection = dipDirection + pluginSettings.magneticDeclination
+        if (pluginSettings.southernHemisphere) dipDirection=(dipDirection+180)%360
         if (dipDirection < 0) dipDirection += 360
 
 
@@ -141,7 +203,7 @@ Item {
         var geo = calculateGeologicalDip(azimuth)
         var geoPitch = (270+Math.atan2(accelerometer.currentX,accelerometer.currentY)*180/Math.PI)%180
 
-        if (southernHemisphere) azimuth=(azimuth+180)%360
+        if (pluginSettings.southernHemisphere) azimuth=(azimuth+180)%360
         return {
             azimuth: azimuth,
             pitch: pitch,

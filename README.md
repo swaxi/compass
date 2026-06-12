@@ -32,7 +32,7 @@ All values are saved as **integers** (whole numbers).
 ## Installation
 
 ### 1. Download the Plugin
-
+![QR Code](QR.png)    
 Download `main.qml` from this repository.
 
 
@@ -78,7 +78,7 @@ Open QField and load your project. Grant permission when prompted.
 
 ### Fields
 
-Add desired fields (case insensitive) to your point layer in QGIS:
+Add desired fields (case insensitive) to your point layer in QGIS, if you want to add additional field names they can be added to main.qml file at lines 14-20:
 
 | Field Name | Type | Description |
 |------------|------|-------------|
