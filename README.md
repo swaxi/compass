@@ -38,7 +38,7 @@ Install via QR code directly within the QFIELD app in the PLugin Manager area of
 
 ### 2. Configure Declination and Hemisphere
 
-After loading the plugin, tap the **the settings button (three horizontal sliders icon) button** in QField's toolbar to open the settings dialog:
+After installing the plugin, open QField's **Settings → Plugins**, find the Compass plugin, and tap the configure button (three horizontal sliders icon) to open the settings dialog:
 
 - **Magnetic Declination (°)** — enter your local value (e.g. `-1.5` for 1.5° west, `+3.2` for east). Find your value at [magnetic-declination.com](https://www.magnetic-declination.com).
 - **Southern Hemisphere** — toggle ON if you are south of the equator.
@@ -107,19 +107,19 @@ In QGIS: Layer → New Shapefile Layer
 
 ## Usage
 
-### The Buttons
+### The Button
 
-The plugin adds **two buttons** to QField's toolbar:
+The plugin adds **one button** to QField's toolbar:
 
 ```
-┌──────────────┐  ┌──────┐
-│       🧭  Ⓐ │  │ ===  │  ← Settings (declination & hemisphere)
-│              │  │ ===  │
-│ Az: 45°      │  │ ===  │
-│ Plunge:15°   │  └──────┘
-│ Pitch:25°    │
-│ Dip:35°      │
-│ Dip Dir:135° │
+┌──────────────┐
+│       🧭  Ⓐ │  ← Compass icon + Auto indicator (A=auto, M=manual)
+│              │
+│ Az: 45°      │  ← Live azimuth value
+│ Plunge:15°   │  ← Live plunge value
+│ Pitch:25°    │  ← Live pitch value
+│ Dip:35°      │  ← Live dip angle
+│ Dip Dir:135° │  ← Live dip direction
 └──────────────┘
 ```
 
@@ -273,7 +273,7 @@ Long-press the button to toggle auto-fill ON.
 
 ### Before Fieldwork
 
-1. ✅ Set declination and hemisphere via the the settings button (three horizontal sliders icon) button, then test in office
+1. ✅ Set declination and hemisphere via Settings → Plugins → Compass configure button, then test in office
 2. ✅ Calibrate compass (figure-8 motion)
 3. ✅ Practice measurement technique
 4. ✅ Verify data types in QGIS
