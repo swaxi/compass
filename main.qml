@@ -8,9 +8,19 @@ Item {
     
     // User-configurable settings
     property real magneticDeclination: -1.5  // Your custom value
-    property bool southernHemisphere: true  // Your custom value
+    property bool southernHemisphere: true   // Your custom value
+
+    // Field name mappings — add your own layer field names to any list
+    property var azimuthFieldNames:      ["azimuth", "azimut", "heading"]
+    property var rollFieldNames:         ["roll"]
+    property var pitchFieldNames:        ["pitch"]
+    property var dipFieldNames:          ["dip", "dip_angle", "pendage", "dip_ref"]
+    property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref"]
+    property var strikeFieldNames:       ["strike_rhr", "strike", "strike_ref"]
+    property var plungeFieldNames:       ["plunge", "plongement"]
 
     // Do not edit past this line
+    property var skipFieldNames:         ["fid", "id", "objectid"]
     property var mainWindow: iface.mainWindow()
     property var overlayFeatureFormDrawer: iface.findItemByObjectName('overlayFeatureFormDrawer')
     
@@ -156,38 +166,36 @@ Item {
             
             for (var i = 0; i < fieldNames.length; i++) {
                 var fieldName = fieldNames[i].toLowerCase()
-                if (fieldName === 'fid' || fieldName === 'id' || fieldName === 'objectid') continue
-                
-                if (fieldName === 'azimuth' || fieldName === 'azimut' || fieldName === 'heading') {
+                if (skipFieldNames.indexOf(fieldName) !== -1) continue
+
+                if (azimuthFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.azimuth))
                     populated = true
                 }
-                else if (fieldName === 'roll') {
+                else if (rollFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.roll))
                     populated = true
-                }                
-                else if (fieldName === 'pitch') {
+                }
+                else if (pitchFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.geoPitch))
                     populated = true
                 }
-                else if (fieldName === 'dip' || fieldName === 'dip_angle' || fieldName === 'pendage' ||
-                         fieldName === 'dip_ref') {
+                else if (dipFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.dip))
                     populated = true
                 }
-                else if (fieldName === 'dip_direction' || fieldName === 'dipdirection' || fieldName === 'dip_dir'
-                    || fieldName === 'dipdir_ref') {
+                else if (dipDirectionFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.dipDirection))
                     populated = true
                 }
-                else if (fieldName === 'strike_rhr' || fieldName === 'strike'|| fieldName === 'strike_ref') {
+                else if (strikeFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.strike))
                     populated = true
                 }
-                else if (fieldName === 'plunge' || fieldName === 'plongement') {
+                else if (plungeFieldNames.indexOf(fieldName) !== -1) {
                     feature.setAttribute(i, Math.round(orientation.plunge))
                     populated = true
-                }            
+                }
             }
             
             if (populated) {
