@@ -32,26 +32,11 @@ All values are saved as **integers** (whole numbers).
 ## Installation
 
 ### 1. Download the Plugin
+Install via QR code directly within the QFIELD app in the PLugin Manager area of Settings
 ![QR Code](QR.png)    
-Download `main.qml` from this repository.
 
 
-### 2. Load the File into QField
-
-**For QFieldCloud projects:**
-
-- Place the `.qml` file in your project folder in QGIS
-- Upload it alongside your project using QFieldSync
-
-**For local projects:**
-- Rename to same name as project (with `.qml` instead of `.qgs`) and place the `.qml` file in the same directory as your `.qgs` file
-- Copy both to your device
-
-**For all QField Projects** 
-Upload from zipfile via URL in Qfield App on your device in settings/plugins:
-https://github.com/swaxi/compass/archive/refs/heads/main.zip    
-   
-### 3. Configure Declination and Hemisphere
+### 2. Configure Declination and Hemisphere
 
 After loading the plugin, tap the **the settings button (three horizontal sliders icon) button** in QField's toolbar to open the settings dialog:
 
@@ -60,13 +45,6 @@ After loading the plugin, tap the **the settings button (three horizontal slider
 
 Settings are saved permanently on the device — you only need to set them once.
 
-> If you installed the plugin as an app-wide plugin (via the zip URL), a configure button also appears in QField's **Settings → Plugins** panel.
-
-### 4. Restart QField
-
-Open QField and load your project. Grant permission when prompted.
-
----
 
 ## QGIS Project Setup
 
