@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtSensors
 import org.qfield
-import Qt.labs.settings 1.0
+import QtCore
 
 Item {
     id: root
