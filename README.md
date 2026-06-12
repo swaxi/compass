@@ -36,24 +36,7 @@ All values are saved as **integers** (whole numbers).
 Download `main.qml` from this repository.
 
 
-### 2. User-defined parameters 
-#### Declination Correction
-Open `main.qml` in a text editor and edit declination value on line 10 so it has your local declination:   
-
-
-      property real magneticDeclination: -1.5  // Your custom value   
-
-#### Magnetic Northern Hemisphere Correction
-
-Open `main.qml` in a text editor and change line 11 so it looks like this:   
-
-
-      property bool southernHemisphere: false  // Your custom value
-   
-
-
-   
-### 3. Load the File into QField
+### 2. Load the File into QField
 
 **For QFieldCloud projects:**
 
@@ -68,6 +51,17 @@ Open `main.qml` in a text editor and change line 11 so it looks like this:
 Upload from zipfile via URL in Qfield App on your device in settings/plugins:
 https://github.com/swaxi/compass/archive/refs/heads/main.zip    
    
+### 3. Configure Declination and Hemisphere
+
+After loading the plugin, tap the **the settings button (three horizontal sliders icon) button** in QField's toolbar to open the settings dialog:
+
+- **Magnetic Declination (°)** — enter your local value (e.g. `-1.5` for 1.5° west, `+3.2` for east). Find your value at [magnetic-declination.com](https://www.magnetic-declination.com).
+- **Southern Hemisphere** — toggle ON if you are south of the equator.
+
+Settings are saved permanently on the device — you only need to set them once.
+
+> If you installed the plugin as an app-wide plugin (via the zip URL), a configure button also appears in QField's **Settings → Plugins** panel.
+
 ### 4. Restart QField
 
 Open QField and load your project. Grant permission when prompted.
@@ -80,17 +74,17 @@ Open QField and load your project. Grant permission when prompted.
 
 Add desired fields (case insensitive) to your point layer in QGIS, if you want to add additional field names they can be added to main.qml file at lines 14-20:
 
-| Field Name | Type | Description |
-|------------|------|-------------|
-| `azimuth` | Integer | Compass heading (0-360°) |
-| `dip` or `dip_ref`| Integer | Dip angle (0-90°) |
-| `dip_direction` or `dip_dir` or `dipdir_ref` | Integer | Dip direction (0-360°) |
-| `strike` | Integer | Strike direction (0-360°) |
-| `plunge` | Integer | Lineation plunge (0-90°) |
+| Field Name(s) | Type | Description |
+|---------------|------|-------------|
+| `azimuth`, `azimut`, `heading` | Integer | Compass heading (0-360°) |
+| `dip`, `dip_angle`, `pendage`, `dip_ref` | Integer | Dip angle (0-90°) |
+| `dip_direction`, `dipdirection`, `dip_dir`, `dipdir_ref` | Integer | Dip direction (0-360°) |
+| `strike_rhr`, `strike`, `strike_ref` | Integer | Strike direction (0-360°) |
+| `plunge`, `plongement` | Integer | Lineation plunge (0-90°) |
 | `pitch` | Integer | Lineation pitch (0-180°) clockwise from right |
+| `roll` | Integer | Side tilt of device |
 
-**Optional fields:**
-- `roll` - Side tilt angle
+You can add your own field name aliases by editing the lists near the top of `main.qml` (e.g. `azimuthFieldNames`, `dipFieldNames`, etc.).
 
 ### Recommended Layer Setup
 
@@ -135,19 +129,19 @@ In QGIS: Layer → New Shapefile Layer
 
 ## Usage
 
-### The Button
+### The Buttons
 
-The plugin adds **one red square button** to QField's toolbar:
+The plugin adds **two buttons** to QField's toolbar:
 
 ```
-┌──────────────┐
-│       🧭  Ⓐ │  ← Compass icon + Auto indicator (A=auto, M=manual)
-│              │
-│ Az: 45°      │  ← Live azimuth value
-│ Plunge:15°   │  ← Live plunge value
-│ Pitch:25°    │  ← Live pitch value
-│ Dip:35°      │  ← Live dip angle
-│ Dip Dir:135° │  ← Live dip direction
+┌──────────────┐  ┌──────┐
+│       🧭  Ⓐ │  │ ===  │  ← Settings (declination & hemisphere)
+│              │  │ ===  │
+│ Az: 45°      │  │ ===  │
+│ Plunge:15°   │  └──────┘
+│ Pitch:25°    │
+│ Dip:35°      │
+│ Dip Dir:135° │
 └──────────────┘
 ```
 
@@ -188,40 +182,19 @@ The plugin adds **one red square button** to QField's toolbar:
 
 ## Layer Field Mapping
 
-The plugin recognizes these layer field names (case-insensitive):
+The plugin recognizes these layer field names (case-insensitive). You only need the fields you want — the plugin fills whatever it finds.
 
-### Azimuth
-- `azimuth`
-- `compass`
-- `heading`
-- `azimut`
+| Measurement | Recognised field names |
+|-------------|------------------------|
+| Azimuth | `azimuth`, `azimut`, `heading` |
+| Dip | `dip`, `dip_angle`, `pendage`, `dip_ref` |
+| Dip Direction | `dip_direction`, `dipdirection`, `dip_dir`, `dipdir_ref` |
+| Strike | `strike_rhr`, `strike`, `strike_ref` |
+| Plunge | `plunge`, `plongement` |
+| Pitch | `pitch` |
+| Roll | `roll` |
 
-### Plunge
-- `plunge`
-- `plongement`
-
-### Roll (of device)
-- `roll`
-
-### Pitch
-- `pitch`
-
-### Dip
-- `dip`
-- `dip_angle`
-- `pendage`
-
-### Dip Direction
-- `dip_direction`
-- `dipdirection`
-- `dip_dir`
-
-### Strike
-- `strike_rhr`
-- `strike`
-
-
-**Note:** You don't need all fields - the plugin will fill whatever fields exist.
+To add your own field name, open `main.qml` and append it to the relevant list near the top of the file (e.g. `azimuthFieldNames`, `strikeFieldNames`, etc.).
 
 ---
 
@@ -322,7 +295,7 @@ Long-press the button to toggle auto-fill ON.
 
 ### Before Fieldwork
 
-1. ✅ Test plugin in office (after setting correct declination and hemisphere info)
+1. ✅ Set declination and hemisphere via the the settings button (three horizontal sliders icon) button, then test in office
 2. ✅ Calibrate compass (figure-8 motion)
 3. ✅ Practice measurement technique
 4. ✅ Verify data types in QGIS
