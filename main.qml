@@ -309,6 +309,28 @@ Item {
     }
     
     Component {
+        id: settingsButtonComponent
+        Button {
+            width: 40
+            height: 40
+            background: Rectangle {
+                color: parent.pressed ? "#455A64" : "#607D8B"
+                radius: 9
+                border.color: "#37474F"
+                border.width: 2
+            }
+            contentItem: Text {
+                text: "⚙"
+                font.pixelSize: 20
+                color: "white"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+            }
+            onClicked: configDialog.open()
+        }
+    }
+
+    Component {
         id: mainButtonComponent
         Button {
             width: 90
@@ -437,6 +459,10 @@ Item {
             var mainBtn = mainButtonComponent.createObject(root)
             if (mainBtn) {
                 iface.addItemToPluginsToolbar(mainBtn)
+            }
+            var settingsBtn = settingsButtonComponent.createObject(root)
+            if (settingsBtn) {
+                iface.addItemToPluginsToolbar(settingsBtn)
             }
             mainWindow.displayToast("✓ Gravity Method")
         })
