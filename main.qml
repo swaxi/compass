@@ -12,7 +12,7 @@ Item {
     property var rollFieldNames:         ["roll"]
     property var pitchFieldNames:        ["pitch"]
     property var dipFieldNames:          ["dip", "dip_angle", "pendage", "dip_ref", "P_dip"]
-    property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref", "P_dipAzimuth", "Dip Azimuth"]
+    property var dipDirectionFieldNames: ["dip_direction", "dipdirection", "dip_dir", "dipdir_ref", "P_dipAzimuth", "Dip azimuth"]
     property var strikeFieldNames:       ["strike_rhr", "strike", "strike_ref", "P_strike"]
     property var plungeFieldNames:       ["plunge", "plongement", "L_plunge"]
     property var skipFieldNames:         ["fid", "id", "objectid"]
