@@ -8,7 +8,7 @@ Item {
     id: root
     
     // Field name mappings — add your own layer field names to any list
-    property var azimuthFieldNames:      ["azimuth", "azimut", "heading", "L_plungeAzimuth"]
+    property var azimuthFieldNames:      ["azimuth", "azimut", "heading", "L_plungeAzimuth", "Trend"]
     property var rollFieldNames:         ["roll"]
     property var pitchFieldNames:        ["pitch"]
     property var dipFieldNames:          ["dip", "dip_angle", "pendage", "dip_ref", "P_dip"]
